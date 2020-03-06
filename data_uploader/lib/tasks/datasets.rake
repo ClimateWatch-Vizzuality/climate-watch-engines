@@ -11,7 +11,7 @@ namespace :db do
 
         platform_props['sections'].each do |section_props|
           section = platform.sections.find_by(name: section_props['name'])
-          next unless section
+          next unless section && section_props['datasets']
 
           dataset_names = section_props['datasets']
           dataset_names.each do |dataset_name|
@@ -44,10 +44,12 @@ namespace :db do
           section_name = section_props['name']
           next unless old_names[platform_name][section_name]
 
-          section_props['datasets'].each do |dataset_name|
-            next unless old_names[platform_name][section_name].find(dataset_name)
+          if section_props['datasets']
+            section_props['datasets'].each do |dataset_name|
+              next unless old_names[platform_name][section_name].find(dataset_name)
 
-            old_names[platform_name][section_name].delete(dataset_name)
+              old_names[platform_name][section_name].delete(dataset_name)
+            end
           end
 
           datasets = DataUploader::Dataset.
