@@ -1,8 +1,7 @@
 env:
   global:
     - CC_TEST_REPORTER_ID=c4f24e94293203e5b662a4c20e1a872354f69511b0c7ba63f2980e5c5dbd25b2
-dist: trusty
-sudo: false
+dist: bionic
 language: ruby
 rvm:
 - 2.5.1
