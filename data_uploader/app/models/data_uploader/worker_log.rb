@@ -7,7 +7,8 @@ module DataUploader
       started: 1,
       finished: 2,
       failed: 3,
-      dead: 4
+      dead: 4,
+      aborted: 5
     }
 
     def details_errors
