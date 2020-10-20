@@ -28,7 +28,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'aws-sdk-s3', '~> 1'
 
   s.add_dependency 'rubyzip'
-  s.add_dependency 'sidekiq'
+  s.add_dependency 'sidekiq', '>= 6.1.0'
 
   s.add_dependency 'climate_watch_engine', '~> 1.4.0'
 
