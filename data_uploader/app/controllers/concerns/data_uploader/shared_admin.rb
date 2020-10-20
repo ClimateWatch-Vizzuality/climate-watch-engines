@@ -81,8 +81,6 @@ module DataUploader
       base.send(:page_action, :abort_importer, method: :patch) do
         worker_log = DataUploader::WorkerLog.find_by_id(params[:id])
         if worker_log
-          # if the job has not been started yet, we might still be able to cancel it
-          DataUploader::BaseImportWorker.cancel!(worker_log.jid)
           worker_log.update(state: 'aborted')
         end
         notice = 'Task aborted.'
